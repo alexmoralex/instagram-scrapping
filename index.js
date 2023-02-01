@@ -14,10 +14,10 @@ export const getMedia = async (url) => {
 
   const data = await axios(config)
     .then(res => {
-      let list;
-
-      if (Array.isArray(res.data)) list = res.data.map(post => post.sd?.url || post.thumb)
-      else list = [res.data.url[0].url];
+      const list = Array.isArray(res.data) ?
+        res.data.map(post => post.sd?.url || post.thumb)
+      :
+        [res.data.url[0].url]
 
       return list;
     })
