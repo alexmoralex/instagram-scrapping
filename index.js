@@ -12,7 +12,7 @@ export const getMedia = async (url) => {
     data: { url },
   };
 
-  axios(config)
+  const data = await axios(config)
     .then(res => {
       let list;
 
@@ -22,10 +22,14 @@ export const getMedia = async (url) => {
       return list;
     })
     .catch(err => {
+      throw err;
+
       return ({
         error: err.message
       });
     });
+
+  return data
 };
 
 export const getProfile = (username) => {
@@ -37,21 +41,32 @@ export const getProfile = (username) => {
     headers,
   };
 
-  axios(config)
+  const data = await axios(config)
     .then(res => res.data.result)
     .catch(err => {
+      throw err;
+
       return ({
         error: err.message
       });
     });
+  
+  return data
 };
 
 export const getBufferImage = async (url) => {
-  const res = await axios({ 
+  const data = await axios({ 
     method: 'GET',
     url, 
     responseType: 'arraybuffer' 
   })
+    .catch(err => {
+      throw err;
 
-  return res
+      return ({
+        error: err.message
+      });
+    });
+
+  return data;
 }
