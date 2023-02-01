@@ -2,9 +2,9 @@
   "name": "instagram-scrapping",
   "version": "1.0.0",
   "description": "Get data from Instagram",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "node src/test.js"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
